@@ -7,4 +7,8 @@ resource "aws_instance" "example" {
     tags = {
         Name = "terraform-instance"
     }
+  resource "aws_s3_bucket" "my_bucket" {
+  bucket = "thisismybucketcreatedterraf"  # Update with your desired bucket name
+  acl    = "private"                # Access control for the bucket (optional)
+}
 }
