@@ -16,5 +16,12 @@ pipeline {
                 sh 'terraform apply -auto-approve'
             }
         }
+                stage('graphcreation'){
+            steps{
+                sh 'terraform graph > graph.dot'
+                sh 'dot -Tpng graph.dot -i graph.png'
+                sh 'aws s3 cp ./graph.png '
+            }
+        }
     }
 }
